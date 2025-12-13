@@ -1,6 +1,8 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 type Message = {
   id: number;
@@ -97,7 +99,11 @@ export default function HomePage() {
                       : "chat-bubble-bot"
                   }
                 >
-                  <p className="whitespace-pre-wrap text-sm">{m.content}</p>
+                  <div className="prose prose-sm prose-invert max-w-none">
+                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                      {m.content}
+                    </ReactMarkdown>
+                  </div>
                 </div>
               </div>
             ))}
