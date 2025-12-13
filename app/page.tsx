@@ -83,7 +83,11 @@ export default function HomePage() {
         <header className="border-b border-slate-800 px-4 py-3">
           <h1 className="text-lg font-semibold">KLD Omnichat</h1>
           <p className="text-xs text-slate-400">
-            An AI-powered chatbot for your questions and inquiries regarding the Omnibus. Messages are processed via n8n and stored in Supabase.
+            An AI-powered chatbot for your questions and inquiries regarding the Omnibus.
+          </p>
+
+          <p className="text-xs text-slate-400">
+            Messages are processed via n8n and stored in Supabase.
           </p>
         </header>
 
