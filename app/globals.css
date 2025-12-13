@@ -1,15 +1,52 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@theme {
+  /* Extend default theme if needed */
+}
 
 body {
-  @apply bg-slate-950 text-slate-50 antialiased;
+  background-color: rgb(2 6 23);
+  color: rgb(248 250 252);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .chat-bubble-user {
-  @apply bg-blue-600 text-white rounded-2xl px-4 py-2 max-w-xs md:max-w-sm lg:max-w-md;
+  background-color: rgb(37 99 235);
+  color: white;
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  max-width: 20rem;
+}
+
+@media (min-width: 768px) {
+  .chat-bubble-user {
+    max-width: 24rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .chat-bubble-user {
+    max-width: 28rem;
+  }
 }
 
 .chat-bubble-bot {
-  @apply bg-slate-800 text-slate-50 rounded-2xl px-4 py-2 max-w-xs md:max-w-sm lg:max-w-md;
+  background-color: rgb(30 41 59);
+  color: rgb(248 250 252);
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  max-width: 20rem;
+}
+
+@media (min-width: 768px) {
+  .chat-bubble-bot {
+    max-width: 24rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .chat-bubble-bot {
+    max-width: 28rem;
+  }
 }
