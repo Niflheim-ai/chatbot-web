@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useState, useEffect, useRef } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
@@ -16,6 +16,16 @@ export default function HomePage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [nextId, setNextId] = useState(1);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Auto-scroll to bottom when new messages arrive
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages, isLoading]);
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -68,8 +78,8 @@ export default function HomePage() {
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center px-4">
-      <div className="w-full max-w-2xl rounded-2xl border border-slate-800 bg-slate-900/60 shadow-2xl backdrop-blur">
+    <main className="flex min-h-screen items-center justify-center px-4 py-8">
+      <div className="w-full max-w-3xl rounded-2xl border border-slate-800 bg-slate-900/60 shadow-2xl backdrop-blur">
         <header className="border-b border-slate-800 px-4 py-3">
           <h1 className="text-lg font-semibold">n8n Chatbot</h1>
           <p className="text-xs text-slate-400">
@@ -77,8 +87,8 @@ export default function HomePage() {
           </p>
         </header>
 
-        <section className="flex h-[420px] flex-col overflow-hidden">
-          <div className="flex-1 space-y-4 overflow-y-auto px-4 py-3">
+        <section className="flex h-[calc(100vh-16rem)] max-h-[700px] min-h-[500px] flex-col overflow-hidden">
+          <div className="flex-1 space-y-4 overflow-y-auto px-4 py-3 scroll-smooth">
             {messages.length === 0 && (
               <p className="text-sm text-slate-400">
                 Start the conversation by sending a message.
@@ -126,6 +136,9 @@ export default function HomePage() {
                 {error}
               </p>
             )}
+
+            {/* Invisible div for auto-scroll target */}
+            <div ref={messagesEndRef} />
           </div>
 
           <form
