@@ -3,6 +3,7 @@
 import { FormEvent, useState, useEffect, useRef } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
 
 type Message = {
   id: number;
@@ -114,7 +115,10 @@ export default function HomePage() {
                   }
                 >
                   <div className="prose prose-sm prose-invert max-w-none">
-                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                    <ReactMarkdown
+                      remarkPlugins={[remarkGfm]}
+                      rehypePlugins={[rehypeRaw]}
+                    >
                       {m.content}
                     </ReactMarkdown>
                   </div>
