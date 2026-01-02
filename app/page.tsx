@@ -114,7 +114,7 @@ export default function HomePage() {
                       : "chat-bubble-bot"
                   }
                 >
-                  <div className="prose prose-sm prose-invert max-w-none">
+                  <div className="text-sm leading-relaxed break-words prose">
                     <ReactMarkdown
                       remarkPlugins={[remarkGfm]}
                       rehypePlugins={[rehypeRaw]}
