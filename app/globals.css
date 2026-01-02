@@ -110,13 +110,16 @@ body {
   margin: 0.25em 0;
 }
 
+/* Updated link styles - brighter blue and bold */
 .prose a {
-  color: rgb(96 165 250);
+  color: rgb(59 130 246); /* Bright blue-500 */
   text-decoration: underline;
+  font-weight: 600;
+  transition: color 0.2s ease;
 }
 
 .prose a:hover {
-  color: rgb(147 197 253);
+  color: rgb(96 165 250); /* Lighter blue-400 on hover */
 }
 
 .prose blockquote {
